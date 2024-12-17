@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+
+.navbar {
+    background-color:#091057; /* Navbar background color */
+    overflow: hidden; /* Clear floats */
+    display: flex;
+    justify-content: space-around; /* Evenly space the items */
+    padding: 10px 0; /* Add some padding for better spacing */
+}
+
+.navbar ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around; /* Evenly space the items */
+    width: 100%; /* Make the ul take full width */
+}
+
+.navbar li {
+    flex: 1; /* Allow each li to take equal space */
+    text-align: center; /* Center text */
+}
+
+.button {
+    display: inline-block; /* Make the button inline-block */
+    padding: 10px 15px; /* Button padding */
+    background-color: #024CAA; /* Button background color */
+    color: white;
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.button:hover {
+    background-color: #EC8305;
+}

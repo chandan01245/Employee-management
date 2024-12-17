@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href = "{% static 'dashboardstyle.css' %}">
+    <link rel="shortcut icon" href="{% static 'logo.ico' %}"/>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="dashboard-bar">
+        <h2>Dashboard</h2>
+    </div>
+    <div class="main-content">
+        <h1>Welcome Admin Panel</h1>
+    </div>
+</body>
+</html>

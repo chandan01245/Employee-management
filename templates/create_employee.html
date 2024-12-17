@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'create_employee.css' %}">
+    <link rel="shortcut icon" href="{% static 'logo.ico' %}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="container mt-4">
+        <div class="text-center mb-4">
+            <h2>Employee List</h2>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Create Employee</h3>
+            </div>
+            <div class="card-body">
+                <form action="{% url 'new_employee' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name:</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mobile" class="form-label">Mobile No.:</label>
+                        <input type="text" id="mobile" name="mobile" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="designation" class="form-label">Designation:</label>
+                        <select id="designation" name="designation" class="form-select" required>
+                            <option value="Manager">Manager</option>
+                            <option value="HR">HR</option>
+                            <option value="Sales">Sales</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Gender:</label>
+                        <div>
+                            <label class="form-check-label me-3"><input type="radio" name="gender" value="Male" class="form-check-input" required> Male</label>
+                            <label class="form-check-label me-3"><input type="radio" name="gender" value="Female" class="form-check-input"> Female</label>
+                            <label class="form-check-label"><input type="radio" name="gender" value="Other" class="form-check-input"> Other</label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Course:</label>
+                        <div>
+                            <label class="form-check-label me-3"><input type="checkbox" name="course" value="MBA" class="form-check-input"> MBA</label>
+                            <label class="form-check-label me-3"><input type="checkbox" name="course" value="BCA" class="form-check-input"> BCA</label>
+                            <label class="form-check-label"><input type="checkbox" name="course" value="BSC" class="form-check-input"> BSC</label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image Upload:</label>
+                        <input type="file" id="image" name="image" class="form-control" accept=".png, .jpg, .jpeg" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'employee_list.css' %}">
+    <link rel="shortcut icon" href="{% static 'logo.ico' %}"/>
+</head>
+<body onload="filterTable()">
+    {% include 'header.html' %}
+    <div class="dashboard-bar">
+        <h2>Employee List</h2>
+    </div>
+    
+    <div class="main-content">
+        <h1>Employee Details</h1>
+        
+        <!-- Create Employee Button -->
+        <div class="create-employee-button">
+            <a href="{% url 'new_employee' %}" class="button">Create Employee</a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search by ID, name, email, or date..." onkeyup="filterTable()">
+            <span>Count: <span id="count"></span></span>
+        </div>
+
+        <table id="employeeTable">
+            <thead>
+                <tr>
+                    <th>Unique ID</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile No.</th>
+                    <th>Designation</th>
+                    <th>Gender</th>
+                    <th>Course</th>
+                    <th>Create Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees %}
+                <tr>
+                    <td>{{ employee.f_Id }}</td>
+                    <td><img src="#" alt="Img Not Found" width="50" height="50"></td>
+                    <td>{{ employee.f_Name }}</td>
+                    <td>{{ employee.f_Email }}</td>
+                    <td>{{ employee.f_Mobile }}</td>
+                    <td>{{ employee.f_Designation }}</td>
+                    <td>{{ employee.f_gender }}</td>
+                    <td>{% for employee_course in employee.f_Course %}{{employee_course}}<br>{% endfor %}</td>
+                    <td>{{ employee.f_Createdate }}</td>
+                    <td class="action-buttons">
+                        <a href="{% url 'change_employee' employee.f_Id %}" class="button">Edit</a>
+                        <a href="{% url 'delete_employee' employee.f_Id %}" class="button">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <p class="text-muted">No Employees found.</p>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function filterTable() {
+            const input = document.getElementById("search");
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById("employeeTable");
+            const tr = table.getElementsByTagName("tr");
+            let visibleCount = 0;
+
+            for (let i = 1; i < tr.length; i++) {
+                const tdId = tr[i].getElementsByTagName("td")[0];
+                const tdName = tr[i].getElementsByTagName("td")[2];
+                const tdEmail = tr[i].getElementsByTagName("td")[3];
+                const tdDate = tr[i].getElementsByTagName("td")[8];
+                if (tdId || tdName || tdEmail || tdDate) {
+                    const txtValueId = tdId.textContent || tdId.innerText;
+                    const txtValueName = tdName.textContent || tdName.innerText;
+                    const txtValueEmail = tdEmail.textContent || tdEmail.innerText;
+                    const txtValueDate = tdDate.textContent || tdDate.innerText;
+                    if (
+                        txtValueId.toLowerCase().includes(filter) ||
+                        txtValueName.toLowerCase().includes(filter) ||
+                        txtValueEmail.toLowerCase().includes(filter) ||
+                        txtValueDate.toLowerCase().includes(filter)
+                    ) {
+                        tr[i].style.display = "";
+                        visibleCount++;
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+            document.getElementById("count").textContent = visibleCount;
+        }
+    </script>
+</body>
+</html>
