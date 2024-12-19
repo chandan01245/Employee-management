@@ -26,5 +26,7 @@ urlpatterns = [
     path("CreateEmployee/",views.create_employee,name="new_employee"),
     path("UpdateEmployee/<employee_id>",views.edit_employee,name="change_employee"),
     path("Delete_employee/<employee_id>",views.delete_employee,name="delete_employee"),
+    path('image/<int:employee_id>/', views.serve_image, name='serve_image'),
+    path('check-email/', views.check_email_duplicate, name='check_email_duplicate'),
     path("",views.logout_page,name="logout"),
 ]

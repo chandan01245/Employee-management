@@ -12,7 +12,7 @@ body {
     background: white;
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
+    padding: 3rem;
     max-width: 400px;
     width: 100%;
 }
@@ -36,18 +36,5 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.error-message {
-    color: #d9534f;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-footer {
-    text-align: center;
-    margin-top: 1rem;
-    font-size: 0.875rem;
-    color: #666;
+    background-color: hsl(0, 100%, 20%);
 }

@@ -7,7 +7,7 @@ body {
 
 
 .navbar {
-    background-color:#091057; /* Navbar background color */
+    background-color:#222831; /* Navbar background color */
     overflow: hidden; /* Clear floats */
     display: flex;
     justify-content: space-around; /* Evenly space the items */
@@ -31,7 +31,7 @@ body {
 .button {
     display: inline-block; /* Make the button inline-block */
     padding: 10px 15px; /* Button padding */
-    background-color: #024CAA; /* Button background color */
+    background-color:#393E46; /* Button background color */
     color: white;
     text-decoration: none; /* Remove underline */
     border-radius: 5px; /* Rounded corners */
